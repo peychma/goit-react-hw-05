@@ -1,0 +1,13 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.link {
+    text-decoration: none;
+    color: burlywood;
+}
+.active {
+    color: blueviolet;
+    text-decoration: none;
+}

@@ -1,0 +1,45 @@
+.gobackbutton:hover,
+.gobackbutton:focus {
+    background-color: gray;
+    border-color: white;
+    color: black;
+}
+.gobackbutton {
+    padding: 8px 30px;
+    text-decoration: none;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    position: absolute;
+    margin: 0;
+}
+.links {
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.link {
+    text-decoration: none;
+    font-size: 16px;
+    color:burlywood;
+}
+.filmtitle {
+    font-size: 36px;
+    text-align: center;
+}
+.filmpar {
+    text-align: center;
+    font-size: 20px;
+}
+.imgdiv {
+    text-align: center;
+}
+
+.imgdiv img {
+    display: inline-block;
+    vertical-align: middle;
+}

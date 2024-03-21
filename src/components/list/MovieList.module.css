@@ -1,0 +1,8 @@
+.movielist {
+    list-style: none;
+}
+.movielinks {
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 16px;
+}

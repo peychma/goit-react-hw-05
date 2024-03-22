@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { toast } from 'react-hot-toast';
-import css from './SearchForm.module.css';
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import css from "./SearchForm.module.css";
 
-const SearchForm = ({ onSubmit, updateQueryParams }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const SearchForm = ({ onSubmit }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
     if (!searchTerm.trim()) {
-      toast.error('Please enter a search term.');
+      toast.error("Please enter a search term.");
       return;
     } else if (searchTerm.trim().length < 2) {
-      toast.error('Search term should be at least two characters.');
+      toast.error("Search term should be at least two characters.");
       return;
     }
     onSubmit(searchTerm);
-    updateQueryParams(searchTerm);
-    setSearchTerm('')
+    setSearchTerm("");
   };
 
   return (
@@ -30,7 +29,7 @@ const SearchForm = ({ onSubmit, updateQueryParams }) => {
         autoFocus
         placeholder="Search your film"
       />
-      <button className={css.searchbutton}  type="submit">Search</button>
+      <button className={css.searchbutton} type="submit">Search</button>
     </form>
   );
 }

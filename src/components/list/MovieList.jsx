@@ -1,15 +1,15 @@
-import React from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import css from './MovieList.module.css';
-
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
+import css from "./MovieList.module.css";
 
 const MovieList = ({ moviesList, token }) => {
+    const location = useLocation();
+
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const url = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1';
+                const url = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
                 const options = {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -18,7 +18,7 @@ const MovieList = ({ moviesList, token }) => {
                 const response = await axios.get(url, options);
                 console.log(response.data.results);
             } catch (error) {
-                console.error('Error fetching movies:', error);
+                console.error("Error fetching movies:", error);
             }
         };
 
@@ -30,7 +30,14 @@ const MovieList = ({ moviesList, token }) => {
             <ul className={css.movielist}>
                 {moviesList.map(movie => (
                     <li className={css.movielinks} key={movie.id}>
-                        <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                        <Link
+                            to={{
+                                pathname: `/movies/${movie.id}`,
+                                state: { from: location.pathname }
+                            }}
+                        >
+                            {movie.title}
+                        </Link>
                     </li>
                 ))}
             </ul>
@@ -39,3 +46,4 @@ const MovieList = ({ moviesList, token }) => {
 }
 
 export default MovieList;
+

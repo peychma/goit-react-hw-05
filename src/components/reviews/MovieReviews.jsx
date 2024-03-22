@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import css from "./MovieReviews.module.css";
 
-const MovieReviews = ({ movieId, token }) => {
+const MovieReviews = ({ token }) => {
+    const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchMovieReviews = async () => {
@@ -18,13 +21,19 @@ const MovieReviews = ({ movieId, token }) => {
                 };
                 const response = await axios.get(url, options);
                 setReviews(response.data.results);
+                setLoading(false);
             } catch (error) {
                 console.error("Error fetching movie reviews:", error);
+                setLoading(false);
             }
         };
 
         fetchMovieReviews();
     }, [movieId, token]);
+
+    if (loading) {
+        return <p>Loading reviews...</p>;
+    }
 
     if (reviews.length === 0) {
         return <p>No reviews available.</p>;

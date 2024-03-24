@@ -24,8 +24,8 @@ return (
                     <Route path="/" element={<HomePage token={token} />} />
                     <Route path="/movies" element={<MoviesPage token={token} />} />
                     <Route path="/movies/:movieId" element={<MovieDetailsPage token={token} />}>
-                        <Route path="cast" element={<MovieCast />} />
-                        <Route path="reviews" element={<MovieReviews />} />
+                        <Route path="cast" element={<MovieCast token={token} />} />
+                        <Route path="reviews" element={<MovieReviews token={token} />} />
                     </Route>
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>

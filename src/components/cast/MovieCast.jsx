@@ -33,7 +33,7 @@ const MovieCast = ({ token }) => {
         fetchMovieCast();
     }, [movieId, token]);
 
-    const defaultImg = "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+    const defaultImg = "/icon_2.png";
 
     if (loading) {
         return <p>Loading cast...</p>;
@@ -52,17 +52,17 @@ const MovieCast = ({ token }) => {
             <ul className={css.cast}>
                 {cast.map(actor => (
                     <li className={css.card} key={actor.id}>
-                        {actor.name}
                         <div className={css.imagediv}>
                             <img 
                                 src={actor.profile_path ? 
-                                    `https://image.tmdb.org/t/p/w500/${actor.profile_path}` : 
+                                    `https://image.tmdb.org/t/p/w780/${actor.profile_path}` : 
                                     defaultImg
                                 } 
                                 width={250} 
                                 alt={actor.name} 
                             />
                         </div>
+                        <p className={css.actorName}>{actor.name}</p>
                     </li>
                 ))}
             </ul>

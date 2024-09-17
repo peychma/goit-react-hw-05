@@ -4,7 +4,11 @@ import axios from "axios";
 import MovieCast from "../../components/cast/MovieCast";
 import MovieReviews from "../../components/reviews/MovieReviews";
 import css from "./MovieDetailsPage.module.css";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
+
+//            <p className={css.director}>Director: <span>{movie.director || 'Unknown'}</span></p>
+//            <p className={css.ageRestriction}>Age Restriction: <span>{movie.adult ? '18+' : '16+'}</span></p>
 const MovieDetailsPage = ({ token }) => {
     const [movie, setMovie] = useState(null);
     const { movieId } = useParams();
@@ -37,20 +41,46 @@ const MovieDetailsPage = ({ token }) => {
         return <div>Loading...</div>;
     }
 
+    const ratingPercentage = Math.round(movie.vote_average * 10);
+    const ratingColor = ratingPercentage > 70 ? 'green' : ratingPercentage >= 50 ? 'yellow' : 'red';
+
     return (
         <div>
-            <div className={css.film}>
-                <Link className={css.gobackbutton} to={backLinkRef.current}>Go Back</Link>
-                <h2 className={css.filmtitle}>{movie.title}</h2>
-                <div className={css.imgdiv}>
-                    <img className={css.filmimg} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt={movie.title} />
-                </div>
-                <p className={css.filmpar}>{movie.overview}</p>
+        <div className={css.filmWrapper}>
+            <div 
+              className={css.filmBackground} 
+              style={{
+               backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})`,
+               backgroundSize: '45% auto',
+               backgroundPosition: 'right top',
+               backgroundRepeat: 'no-repeat'
+              }} />
+    <div className={css.filmContent}>
+        <Link className={css.gobackbutton} to={backLinkRef.current}>Go Back</Link>
+        <img className={css.filmimg} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt={movie.title} />
+        <div className={css.filmtext}>
+            <h2 className={css.filmtitle}>{movie.title} ({new Date(movie.release_date).getFullYear()})</h2>
+            <div className={css.ratingCircle}>
+                <CircularProgressbar
+                    value={ratingPercentage}
+                    text={`${ratingPercentage}%`}
+                    styles={buildStyles({
+                        pathColor: ratingColor,
+                        textColor: '#fff',
+                        trailColor: '#d6d6d6',
+                        textSize: '24px'
+                    })}
+                />
             </div>
+            <p className={css.filmpar}>{movie.overview}</p>
+            <p className={css.genres}>Genres: <span>{movie.genres.map(genre => genre.name).join(', ')}</span></p>
+        </div>
+    </div>
+</div>
             <div className={css.links}>
-                <h3>Additional information</h3>
-                <NavLink className={css.link} to={`/movies/${movieId}/cast`} >Movie Cast</NavLink>
-                <NavLink className={css.link} to={`/movies/${movieId}/reviews`}  >Movie Reviews</NavLink>
+                <h3 className={css.htitle}>Additional information</h3>
+                <NavLink className={css.link} to={`/movies/${movieId}/cast`}>Movie Cast</NavLink>
+                <NavLink className={css.link} to={`/movies/${movieId}/reviews`}>Movie Reviews</NavLink>
                 <Outlet />
             </div>
         </div>
@@ -58,3 +88,4 @@ const MovieDetailsPage = ({ token }) => {
 }
 
 export default MovieDetailsPage;
+

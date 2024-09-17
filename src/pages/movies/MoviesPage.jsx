@@ -49,7 +49,7 @@ const MoviesPage = ({ token }) => {
   return (
     <div>
       <SearchForm onSubmit={handleSearch} />
-      <MovieList moviesList={movies} />
+      <MovieList moviesList={movies} isTrendingPage={false}/>
     </div>
   );
 };

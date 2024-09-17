@@ -30,7 +30,7 @@ const HomePage = ({ token }) => {
 
     return (
         <div>
-            {movies && movies.length > 0 && <MovieList moviesList={movies} token={token} />}
+            {movies && movies.length > 0 && <MovieList moviesList={movies} token={token} isTrendingPage={true}/>}
         </div>
     );
 }

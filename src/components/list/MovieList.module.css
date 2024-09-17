@@ -1,8 +1,95 @@
 .movielist {
     list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
+
 .movielinks {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
-    color: blueviolet;
     font-size: 16px;
+    background-color: rgb(202, 202, 202);
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.movielinks:hover,
+.movielinks:focus{
+    transform: scale(1.05);
+}
+.link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+}
+
+.movieinfo {
+    padding: 16px;
+    background-color: rgb(224, 224, 224);
+    color: darkviolet;
+    border-radius: 0 0 8px 8px;
+}
+
+
+.text,
+.movietitle {
+    text-decoration: none;
+    margin: 0;
+    color: darkviolet;
+}
+
+.ratingCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 95px;
+    color: darkviolet;
+}
+
+.trendingHeader{
+font-size: 40px;
+text-align: center;
+margin: 0;
+color: rgb(224, 224, 224);
+}
+
+.CircularProgressbar-text {
+    font-size: 24px;
+}
+
+.ratingCircle[data-rating='good'] {
+    border-color: rgb(0, 159, 0);
+}
+
+.ratingCircle[data-rating='average'] {
+    border-color: rgb(209, 199, 0);
+}
+
+.ratingCircle[data-rating='poor'] {
+    border-color: rgb(214, 1, 1);
+}
+
+a {
+    text-decoration: none;
 }

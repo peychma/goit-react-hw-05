@@ -4,6 +4,7 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
+    justify-content: center;
 }
 
 .movielinks {
@@ -13,22 +14,15 @@
     font-size: 16px;
     background-color: rgb(202, 202, 202);
     padding: 0;
-    height: auto;
+    height: 100%;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
-
-.movielinks:hover,
-.movielinks:focus{
-    transform: scale(1.05);
-}
-.link {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: inherit;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .poster {
@@ -37,7 +31,6 @@
     display: block;
     object-fit: cover;
     border-radius: 8px 8px 0 0;
-    position: relative;
 }
 
 .movieinfo {
@@ -45,8 +38,9 @@
     background-color: rgb(224, 224, 224);
     color: darkviolet;
     border-radius: 0 0 8px 8px;
+    text-align: center;
+    height: 100px;
 }
-
 
 .text,
 .movietitle {
@@ -64,15 +58,15 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 95px;
+    bottom: 145px;
     color: darkviolet;
 }
 
-.trendingHeader{
-font-size: 40px;
-text-align: center;
-margin-bottom: 10px;
-color: rgb(224, 224, 224);
+.trendingHeader {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(224, 224, 224);
 }
 
 .CircularProgressbar-text {

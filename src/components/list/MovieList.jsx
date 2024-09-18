@@ -75,4 +75,3 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
 };
 
 export default MovieList;
-

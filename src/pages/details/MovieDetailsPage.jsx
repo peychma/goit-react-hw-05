@@ -4,11 +4,10 @@ import axios from "axios";
 import MovieCast from "../../components/cast/MovieCast";
 import MovieReviews from "../../components/reviews/MovieReviews";
 import css from "./MovieDetailsPage.module.css";
+import clsx from "classnames";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 
-//            <p className={css.director}>Director: <span>{movie.director || 'Unknown'}</span></p>
-//            <p className={css.ageRestriction}>Age Restriction: <span>{movie.adult ? '18+' : '16+'}</span></p>
 const MovieDetailsPage = ({ token }) => {
     const [movie, setMovie] = useState(null);
     const { movieId } = useParams();
@@ -16,6 +15,11 @@ const MovieDetailsPage = ({ token }) => {
     const location = useLocation();
     const backLinkRef = useRef(location.state?.from || '/');
 
+    const getActiveLink = ({ isActive }) =>
+        clsx(css.link, {
+            [css.active]: isActive,
+        });
+    
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
@@ -51,7 +55,6 @@ const MovieDetailsPage = ({ token }) => {
               className={css.filmBackground} 
               style={{
                backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})`,
-               backgroundSize: '45% auto',
                backgroundPosition: 'right top',
                backgroundRepeat: 'no-repeat'
               }} />
@@ -79,8 +82,8 @@ const MovieDetailsPage = ({ token }) => {
 </div>
             <div className={css.links}>
                 <h3 className={css.htitle}>Additional information</h3>
-                <NavLink className={css.link} to={`/movies/${movieId}/cast`}>Movie Cast</NavLink>
-                <NavLink className={css.link} to={`/movies/${movieId}/reviews`}>Movie Reviews</NavLink>
+                <NavLink className={getActiveLink} to={`/movies/${movieId}/cast`}>Movie Cast</NavLink>
+                <NavLink className={getActiveLink} to={`/movies/${movieId}/reviews`}>Movie Reviews</NavLink>
                 <Outlet />
             </div>
         </div>

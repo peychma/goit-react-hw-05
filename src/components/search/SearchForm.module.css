@@ -1,3 +1,4 @@
+/* Основні стилі для форми пошуку */
 .search {
     display: flex;
     flex-direction: row;
@@ -39,11 +40,53 @@
     background-color: rgb(25, 25, 25);
     border-color: rgb(202, 202, 202);
 }
+
 ::placeholder {
     color: darkviolet;
     transition: color 0.3s;
 }
+
 ::placeholder:hover,
-::placeholder:focus{
+::placeholder:focus {
     color: rgb(202, 202, 202);
+}
+
+
+@media (max-width: 768px) {
+    .search {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .searchinput {
+        width: 80%;
+    }
+
+    .searchbutton {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .search {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .searchinput {
+        padding: 8px 20px;
+        width: 80%;
+        font-size: 14px;
+    }
+
+    .searchbutton {
+        padding: 8px 20px;
+        width: 80%;
+        font-size: 14px;
+
+    }
+
+    ::placeholder {
+        font-size: 14px;
+    }
 }

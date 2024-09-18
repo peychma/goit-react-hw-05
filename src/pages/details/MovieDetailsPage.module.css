@@ -9,7 +9,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-size: 45% auto;
+    background-size: 40% auto;
     background-position: right top;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -115,4 +115,62 @@
 }
 .htitle{
     margin: 0;
+}
+.active {
+    color: darkviolet;
+}
+
+@media (max-width: 1024px) {
+    .filmContent {
+        flex-direction: row;
+        height: auto;
+        padding: 20px;
+    }
+
+    .filmBackground {
+        background-size: 55% auto;
+        background-position: center top;
+    }
+
+    .filmimg {
+        width: 250px;
+        max-height: 100%;
+        margin: auto;
+    }
+
+    .filmtext {
+        max-width: none;
+        padding: 0 20px;
+    }
+
+    .gobackbutton {
+        position: absolute;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .filmContent {
+        flex-direction: column;
+        height: auto;
+    }
+
+  .filmBackground {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+  }
+
+    .filmimg {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0;
+    }
+
+    .filmtext {
+        max-width: none;
+        padding: 20px 0;
+    }
 }

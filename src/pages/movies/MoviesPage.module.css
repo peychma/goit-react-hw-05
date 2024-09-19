@@ -1,0 +1,29 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    color: darkviolet;
+    background-color: rgb(224, 224, 224);
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid rgb(224, 224, 224);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.link:hover {
+    transform: scale(1.1);
+    background-color: darkviolet;
+    color: rgb(224, 224, 224);
+}
+.pageInfo {
+    color: rgb(224, 224, 224);
+    font-size: 16px;
+    padding: 8px;
+}

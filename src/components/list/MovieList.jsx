@@ -25,7 +25,7 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
     }, [token]);
 
     const getRatingColor = (rating) => {
-        if (rating > 75) return 'green';
+        if (rating > 70) return 'green';
         if (rating >= 50) return 'yellow';
         return 'red';
     };
@@ -37,6 +37,7 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
                 {moviesList.map(movie => {
                     const ratingPercentage = Math.round(movie.vote_average * 10);
                     const ratingColor = getRatingColor(ratingPercentage);
+                    const defaultImage = '/icon_1.png';
 
                     return (
                         <li className={css.movielinks} key={movie.id}>
@@ -44,11 +45,13 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
                                 href={`/movies/${movie.id}`}
                                 className={css.link}
                             >
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className={css.poster}
-                                />
+                                    <img
+                                        src={movie.poster_path ? `https://image.tmdb.org/t/p/w780${movie.poster_path}` : defaultImage}
+                                        alt={movie.title}
+                                        className={css.poster}
+                                        onError={(e) => { e.target.src = defaultImage; }}
+                                    />
+                            
                                 <div className={css.movieinfo}>
                                     <h3 className={css.movietitle}>{movie.title}</h3>
                                     <p className={css.text}>Release Date: {new Date(movie.release_date).toLocaleDateString()}</p>

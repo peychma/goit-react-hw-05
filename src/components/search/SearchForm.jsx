@@ -15,11 +15,10 @@ const SearchForm = ({ onSubmit }) => {
       return;
     }
     onSubmit(searchTerm);
-    // Не очищаємо searchTerm після пошуку
   };
 
   const handleFocus = () => {
-    setSearchTerm(""); // Очищаємо поле при фокусі
+    setSearchTerm("");
   };
 
   return (
@@ -29,7 +28,7 @@ const SearchForm = ({ onSubmit }) => {
         className={css.searchinput}
         value={searchTerm}
         onChange={event => setSearchTerm(event.target.value)}
-        onFocus={handleFocus} // Очищуємо поле при натисканні
+        onFocus={handleFocus}
         autoComplete="off"
         autoFocus
         placeholder="Search your film"

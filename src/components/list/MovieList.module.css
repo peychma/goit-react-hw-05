@@ -24,6 +24,10 @@
     align-items: center;
     justify-content: space-between;
 }
+.movielinks:hover,
+.movielinks:focus {
+    transform: scale(1.05);
+}
 
 .poster {
     width: 100%;

@@ -1,0 +1,10 @@
+.notfound {
+    text-align: center;
+}
+.link {
+    color: rgb(224, 224, 224);
+}
+.link:hover,
+.link:focus {
+    color: darkviolet;
+}

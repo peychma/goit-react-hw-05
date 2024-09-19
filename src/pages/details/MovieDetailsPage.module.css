@@ -25,7 +25,7 @@
     background: linear-gradient(to left, rgba(31, 31, 31, 0.84) 0%, rgba(31, 31, 31, 1) 40%, rgba(31, 31, 31, 1) 100%);
     border-bottom: 1px solid var(--primaryColor);
     z-index: 1;
-    height: 500px;
+    height: 550px;
 }
 
 .filmimg {
@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .filmtitle {

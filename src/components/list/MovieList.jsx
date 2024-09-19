@@ -30,6 +30,19 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
         return 'red';
     };
 
+    const formatDate = (dateString) => {
+        if (!dateString) {
+            return "Unknown";
+        }
+
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const year = date.getFullYear();
+
+        return `${day} ${month} ${year}`;
+    };
+
     return (
         <div>
             {isTrendingPage && <h1 className={css.trendingHeader}>Trending today</h1>}
@@ -51,10 +64,9 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
                                         className={css.poster}
                                         onError={(e) => { e.target.src = defaultImage; }}
                                     />
-                            
                                 <div className={css.movieinfo}>
                                     <h3 className={css.movietitle}>{movie.title}</h3>
-                                    <p className={css.text}>Release Date: {new Date(movie.release_date).toLocaleDateString()}</p>
+                                    <p className={css.text}>Release Date: {formatDate(movie.release_date)}</p>
                                     <div className={css.ratingCircle}>
                                         <CircularProgressbar
                                             value={ratingPercentage}

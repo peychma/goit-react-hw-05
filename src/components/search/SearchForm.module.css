@@ -22,7 +22,6 @@
     border: 1px solid darkviolet;
     border-radius: 20px;
     font-size: 16px;
-    background-color: rgb(224, 224, 224);
     color: rgb(224, 224, 224);
     transition: background-color 0.3s, color 0.3s;
 }

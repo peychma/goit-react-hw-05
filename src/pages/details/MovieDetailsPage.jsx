@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useLocation, Outlet, NavLink } from "react-router-dom";
 import axios from "axios";
-import MovieCast from "../../components/cast/MovieCast";
-import MovieReviews from "../../components/reviews/MovieReviews";
 import css from "./MovieDetailsPage.module.css";
 import clsx from "classnames";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-
+import MovieCast from "../../components/cast/MovieCast";
+import MovieReviews from "../../components/reviews/MovieReviews";
 
 const MovieDetailsPage = ({ token }) => {
     const [movie, setMovie] = useState(null);
     const { movieId } = useParams();
-    const defaultImg = "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+    const defaultImg = "/icon_1.png";
     const location = useLocation();
     const backLinkRef = useRef(location.state?.from || '/');
 
@@ -47,6 +46,7 @@ const MovieDetailsPage = ({ token }) => {
 
     const ratingPercentage = Math.round(movie.vote_average * 10);
     const ratingColor = ratingPercentage > 70 ? 'green' : ratingPercentage >= 50 ? 'yellow' : 'red';
+    const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : '';
 
     return (
         <div>
@@ -54,15 +54,18 @@ const MovieDetailsPage = ({ token }) => {
             <div 
               className={css.filmBackground} 
               style={{
-               backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})`,
+               backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path || 'default'})`,
                backgroundPosition: 'right top',
                backgroundRepeat: 'no-repeat'
               }} />
     <div className={css.filmContent}>
         <Link className={css.gobackbutton} to={backLinkRef.current}>Go Back</Link>
-        <img className={css.filmimg} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt={movie.title} />
+        <img className={css.filmimg} src={movie.poster_path ? `https://image.tmdb.org/t/p/w780/${movie.poster_path}` : defaultImg} alt={movie.title} />
         <div className={css.filmtext}>
-            <h2 className={css.filmtitle}>{movie.title} ({new Date(movie.release_date).getFullYear()})</h2>
+            <h2 className={css.filmtitle}>
+                {movie.title} 
+                {releaseYear && ` (${releaseYear})`}
+            </h2>
             <div className={css.ratingCircle}>
                 <CircularProgressbar
                     value={ratingPercentage}
@@ -75,8 +78,14 @@ const MovieDetailsPage = ({ token }) => {
                     })}
                 />
             </div>
-            <p className={css.filmpar}>{movie.overview}</p>
-            <p className={css.genres}>Genres: <span>{movie.genres.map(genre => genre.name).join(', ')}</span></p>
+            <p className={css.filmpar}>{movie.overview || "No description available"}</p>
+            <p className={css.genres}>
+               Genres:{" "}
+               {movie.genres.length > 0 
+               ? <span>{movie.genres.map(genre => genre.name).join(', ')}</span> 
+               : " No genres available"
+               }
+            </p>
         </div>
     </div>
 </div>
@@ -91,4 +100,3 @@ const MovieDetailsPage = ({ token }) => {
 }
 
 export default MovieDetailsPage;
-

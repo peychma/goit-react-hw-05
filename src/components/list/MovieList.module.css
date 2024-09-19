@@ -1,7 +1,7 @@
 .movielist {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     justify-content: center;
@@ -15,15 +15,15 @@
     background-color: rgb(224, 224, 224);
     padding: 0;
     height: 100%;
+    width: 250px;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
+
 .movielinks:hover,
 .movielinks:focus {
     transform: scale(1.05);
@@ -31,16 +31,9 @@
 
 .poster {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 380px;
     object-fit: cover;
     border-radius: 8px 8px 0 0;
-}
-
-.imagediv {
-    width: 100%;
-    height: 380px;
-    overflow: hidden;
 }
 
 .movieinfo {
@@ -49,12 +42,13 @@
     color: darkviolet;
     border-radius: 0 0 8px 8px;
     text-align: center;
-    height: 100px;
+    height: 110px;
 }
 
 .text,
 .movietitle {
     text-decoration: none;
+    font-size: 16px;
     margin: 0;
     color: darkviolet;
 }
@@ -68,7 +62,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 145px;
+    bottom: 160px;
     color: darkviolet;
 }
 
@@ -97,4 +91,29 @@
 
 a {
     text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .text,
+    .movietitle {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movieinfo {
+        height: auto;
+    }
+
+    .ratingCircle {
+        bottom: auto;
+        top: 10px;
+        left: 10px;
+        position: absolute;
+    }
+
+    .text,
+    .movietitle {
+        font-size: 18px;
+    }
 }

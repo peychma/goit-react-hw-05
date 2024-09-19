@@ -9,9 +9,11 @@ import css from "./MoviesPage.module.css";
 const MoviesPage = ({ token }) => {
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("query") || "";
+  const pageFromParams = parseInt(searchParams.get("page"), 10) || 1;
+  const [currentPage, setCurrentPage] = useState(pageFromParams);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -19,6 +21,7 @@ const MoviesPage = ({ token }) => {
         if (!searchTerm) {
           setMovies([]);
           setTotalPages(1);
+          setTotalResults(0);
           return;
         }
 
@@ -38,11 +41,10 @@ const MoviesPage = ({ token }) => {
         const response = await axios.get(url, options);
         setMovies(response.data.results);
         setTotalPages(response.data.total_pages);
-        
+        setTotalResults(response.data.total_results);
+
         if (response.data.total_results === 0) {
           toast.error("Nothing found.");
-        } else {
-          toast.success(`Found ${response.data.total_results} movies.`);
         }
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -52,14 +54,20 @@ const MoviesPage = ({ token }) => {
 
     fetchMovies();
   }, [searchTerm, token, currentPage]);
+  useEffect(() => {
+    if (totalResults > 0) {
+      toast.success(`Found ${totalResults} movies.`);
+    }
+  }, [totalResults]);
 
-  const handleSearch = async (searchTerm) => {
-    setSearchParams({ query: searchTerm });
+  const handleSearch = (searchTerm) => {
+    setSearchParams({ query: searchTerm, page: 1 });
     setCurrentPage(1);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    setSearchParams({ query: searchTerm, page });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

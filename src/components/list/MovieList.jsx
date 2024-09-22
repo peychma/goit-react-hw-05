@@ -39,7 +39,7 @@ const MovieList = ({ moviesList, token, isTrendingPage }) => {
                         <li className={css.movielinks} key={movie.id}>
                             <Link 
                                 to={`/movies/${movie.id}`} 
-                                state={{ from: location.pathname }} // Передаємо поточний шлях
+                                state={{ from: location }}
                             >
                                 <img
                                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w780${movie.poster_path}` : defaultImage}

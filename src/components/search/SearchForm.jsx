@@ -50,7 +50,10 @@ const SearchForm = ({ onSubmit }) => {
   const handleSubmit = event => {
     event.preventDefault();
     const trimmedSearchTerm = searchTerm.trim();
-    
+
+    // Логування значення перед відправкою
+    console.log("Search term before submitting:", trimmedSearchTerm);
+
     if (!trimmedSearchTerm) {
       toast.error("Please enter a search term.");
       return;
@@ -58,6 +61,7 @@ const SearchForm = ({ onSubmit }) => {
       toast.error("Search term should be at least two characters.");
       return;
     }
+
     onSubmit(trimmedSearchTerm);
   };
 

@@ -15,8 +15,7 @@ CSS styling is implemented using modular CSS (.module.css).
 HTML/CSS  
 JavaScript  
 React  
-React  
-Router  
+React-Router  
 Pagination  
 REST API from TMDB  
 clsx for dynamic CSS classes  

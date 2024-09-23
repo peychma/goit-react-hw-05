@@ -60,15 +60,24 @@
     height: 70px;
     margin-top: 10px;
 }
+.ratingWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-.genres,
-.director,
-.ageRestriction {
+.ratingLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(224, 224, 224);
+}
+
+.genres {
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-.genres span {
+.boldText {
     font-weight: bold;
 }
 

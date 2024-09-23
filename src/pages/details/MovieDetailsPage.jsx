@@ -69,24 +69,32 @@ const MovieDetailsPage = ({ token }) => {
                             {movie.title} 
                             {releaseYear && ` (${releaseYear})`}
                         </h2>
-                        <div className={css.ratingCircle}>
-                            <CircularProgressbar
-                                value={ratingPercentage}
-                                text={`${ratingPercentage}%`}
-                                styles={buildStyles({
-                                    pathColor: ratingColor,
-                                    textColor: '#fff',
-                                    trailColor: '#d6d6d6',
-                                    textSize: '24px'
-                                })}
+                        <div className={css.ratingWrapper}>
+                          <div className={css.ratingCircle}>
+                           <CircularProgressbar
+                              value={ratingPercentage}
+                              text={`${ratingPercentage}%`}
+                              styles={buildStyles({
+                              pathColor: ratingColor,
+                              textColor: '#fff',
+                              trailColor: '#d6d6d6',
+                              textSize: '24px'
+                              })}
                             />
+                          </div>
+                          <span className={css.ratingLabel}>User Score</span>
                         </div>
-                        <p className={css.filmpar}>{movie.overview || "No description available"}</p>
+                        <p className={css.filmpar}>
+                           <span className={css.boldText}>Description:</span>{" "}
+                           {movie.overview 
+                           ? <span>{movie.overview}</span> 
+                           : "No description available"}
+                        </p>
                         <p className={css.genres}>
-                           Genres:{" "}
+                           <span className={css.boldText}>Genres:</span>{" "}
                            {movie.genres.length > 0 
                            ? <span>{movie.genres.map(genre => genre.name).join(', ')}</span> 
-                           : " No genres available"}
+                           : "No genres available"}
                         </p>
                     </div>
                 </div>

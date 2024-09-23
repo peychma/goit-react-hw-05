@@ -16,17 +16,11 @@ CSS styling is implemented using modular CSS (.module.css).
 ## Technologies used:
 
 HTML/CSS  
-
 JavaScript  
-
 React  
-
 React  
-
 Router  
-
 Pagination  
-
 REST API from TMDB  
 
 clsx for dynamic CSS classes

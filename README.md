@@ -15,18 +15,26 @@ CSS styling is implemented using modular CSS (.module.css).
 
 ## Technologies used:
 
-HTML/CSS
-JavaScript
-React
-React
-Router
-Pagination
-REST API from TMDB
+HTML/CSS  
+
+JavaScript  
+
+React  
+
+React  
+
+Router  
+
+Pagination  
+
+REST API from TMDB  
+
 clsx for dynamic CSS classes
 react-toast for notifications
 react-circular-progressbar for users rating
 
 ## Links
 
-[Live Page](https://goit-react-hw-05-eight-mu.vercel.app/)
+[Live Page](https://goit-react-hw-05-eight-mu.vercel.app/)  
+
 [GitHub](https://github.com/peychma/goit-markup-hw-05)

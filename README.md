@@ -1,15 +1,15 @@
 # goit-markup-hw-05
 
 ## Cinema
-Cinema is a web application that allows users to learn about the latest trends in cinema and find the movies, TV shows, or cartoons they want. The project was implemented in React using data from the Movie Database (TMDB).
+Cinema is a web application designed to keep users updated on the latest trends in cinema, helping them discover movies, TV shows, or cartoons of their choice. The project is built with React and utilizes data from The Movie Database (TMDB).
 
 ## Functionality
-On the main page, the user can view currently popular movies.  
-Clicking on a movie opens detailed information about it, including the cast and reviews.  
-On the Movies tab, you can search (find a movie, series, cartoon and other).  
-Pagination has been implemented for easy viewing of search results.  
-Notifications are displayed when the search is empty or there are no results.  
-CSS styling is implemented using modular CSS (.module.css).  
+The main page features a selection of currently trending movies.
+Users can click on a movie to access detailed information, including the cast and reviews.
+In the Movies section, users can search for movies, series, cartoons, and more.
+Pagination has been implemented to improve navigation through search results.
+Notifications appear when no search terms are entered or no results are found.
+The styling is handled using modular CSS (.module.css).
 
 ## Technologies used:
 HTML/CSS  
